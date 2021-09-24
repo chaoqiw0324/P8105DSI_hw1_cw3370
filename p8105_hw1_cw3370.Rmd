@@ -51,4 +51,20 @@ vector3 <- as.numeric(vector_cha)
 vector4 <- as.numeric(vector_factor)
 ```
 
+#Problem 2
+```{r}
+##import dataset penguins##
+data("penguins", package = "palmerpenguins")
+```
+
+Dataset penguins has `r nrow(penguins)` variables, which are `r names(penguins)`. `r names(penguins)[c(1,2,7)]` are factor, `r names(penguins)[c(3,4)]` are number, `r names(penguins)[c(5,6,8)]` are integer. It is a tibble with `r nrow(penguins)` rows and `r ncol(penguins)` cols. The mean flipper length is `r mean(pull(penguins,var=5),na.rm = TRUE)`.
+```{r}
+## Make a scatterplot by ggplot2. Set the color of point to blue and size of point to 1. Name the titile, x axis and y axis. ##
+ggplot(data = penguins, aes(x=bill_length_mm,y=flipper_length_mm)) + 
+    geom_point(color="blue",size=1) +
+    labs(title ="Scatterplot" , x = "Bill Length (millimeters)" , y = "Flipper Length (millimeters)")
+
+## Save the scatterplot##
+ggsave("scatterplot_flipperlength_to_billlength.png",width = 4, height = 4)
+```
 
